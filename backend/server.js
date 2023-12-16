@@ -56,6 +56,6 @@ app.use("/api/posts", postRoute);
 
 
 
-app.listen(8800, () => {
-    console.log("Server running...");
+app.listen(process.env.PORT || 8800, function() {
+    console.log("Starting server now...")
 });

@@ -1,14 +1,12 @@
 import axios from "axios";
 import { useRef } from "react";
 import "./register.css";
-import { useNavigate } from "react-router";
 
 export default function Register() {
   const username = useRef();
   const email = useRef();
   const password = useRef();
   const passwordAgain = useRef();
-  const history = useNavigate();
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -22,7 +20,8 @@ export default function Register() {
       };
       try {
         await axios.post("/auth/register", user);
-        history.push("/login");
+        // Use window.location.href to navigate
+        window.location.href = "/login";
       } catch (err) {
         console.log(err);
       }
@@ -71,7 +70,9 @@ export default function Register() {
             <button className="loginButton" type="submit">
               Sign Up
             </button>
-            <button className="loginRegisterButton">Log into Account</button>
+            <button className="loginRegisterButton">
+              Log into Account
+            </button>
           </form>
         </div>
       </div>
