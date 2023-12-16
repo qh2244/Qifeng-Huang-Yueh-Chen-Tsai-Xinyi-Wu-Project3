@@ -8,7 +8,13 @@ export default defineConfig({
   
   plugins: [
     react(),
-    envCompatible()
-
-  ],
+    envCompatible(),],
+    server: {
+      proxy: {
+        '/api': {
+          target: 'http://localhost:8000/',
+          changeOrigin: true,
+        }
+      }
+    }
 })
